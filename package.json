@@ -1,0 +1,29 @@
+{
+  "name": "e-commerce_-retail-_back_end",
+  "version": "1.0.0",
+  "description": "Back end for an e-commerce website using the MySQL2 and Sequelize packages to connect an Express.js API to a MySQL database along with the dotenv package to store sensitive data through environmental variables.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "seed": "node seeds/index.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndiS90/E-Commerce_-Retail-_Back_End.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndiS90/E-Commerce_-Retail-_Back_End/issues"
+  },
+  "homepage": "https://github.com/AndiS90/E-Commerce_-Retail-_Back_End#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.3.2",
+    "sequelize": "^6.9.0"
+  }
+}
