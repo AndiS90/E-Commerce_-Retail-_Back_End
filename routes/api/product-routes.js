@@ -1,21 +1,56 @@
 const router = require('express').Router();
-const { Product, Category, Tag, ProductTag } = require('../../models');
+const { Product, Category, Tag, Product_Tag } = require('../../models');
 
 // The `/api/products` endpoint
 
-// get all products
-router.get('/', (req, res) => {
+// get all products???
+router.get('/', async (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
+  try {
+    const productData = await Product.findAll(
+      {
+        // JOIN with category, and tag using the Product_Tab through table
+        include: [{ model: Category, through: Product_Tag, as: 'Product_Category' },
+                  { model: Tag, through: Product_Tag, as: 'Product_Tag'}]
+      }
+
+    );
+
+
+    res.status(200).json(productData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+
 });
 
-// get one product
-router.get('/:id', (req, res) => {
+// get one product???
+router.get('/:id', async (req, res) => {
   // find a single product by its `id`
-  // be sure to include its associated Category and Tag data
+  // be sure to include its associated Category and Tag data  
+    try {
+      const productData = await Product.findByPk(req.params.id, {
+
+         // JOIN with category, and tag using the Product_Tab through table
+         include: [{ model: Category, through: Product_Tag, as: 'Product_Category' },
+         { model: Tag, through: Product_Tag, as: 'Product_Tag'}]
+        
+      });
+  
+      if (!productData) {
+        res.status(404).json({ message: 'No product found with this id!' });
+        return;
+      }
+  
+      res.status(200).json(productData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+
 });
 
-// create new product
+// create new product???
 router.post('/', (req, res) => {
   /* req.body should look like this...
     {
@@ -90,7 +125,24 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  // delete one product by its `id` value
-});
+  // delete one product by its `id` value???
+  try {
+    const productData = await Product.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+
+      if (!productData) {
+        res.status(404).json({ message: 'No product found with this id!' });
+        return;
+      }
+  
+      res.status(200).json(locationData);
+    } catch (err) {
+      res.status(500).json(err);
+    }   
+   
+    });
 
 module.exports = router;
