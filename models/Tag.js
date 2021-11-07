@@ -23,7 +23,7 @@ Tag.init(
     timestamps: false,
     freezeTableName: true, //will infer the table name to be equal to the model name, without any modifications:
     underscored: true,
-    modelName: 'category'
+    modelName: 'tag'
   }
 );
 
