@@ -20,10 +20,8 @@ router.get('/', async (req, res) => {
 
       // }
 
-
-
       {
-        // JOIN with category, and tag using the Product_Tab through table
+        // JOIN with category, and tag using the Product_Tag through table
         include: [{
             model: Category,
           },
@@ -51,9 +49,9 @@ router.get('/:id', async (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data  
   try {
-   const productData = await Product.findByPk(req.params.id, {
+    const productData = await Product.findByPk(req.params.id, {
 
-      // JOIN with category, and tag using the Product_Tab through table
+      // JOIN with category, and tag using the Product_Tag through table
       include: [{
           model: Category,
         },
@@ -66,9 +64,7 @@ router.get('/:id', async (req, res) => {
 
     });
 
-//var productData = {"testing": 1};
-
-
+    //var productData = {"testing": 1};
     if (!productData) {
       res.status(404).json({
         message: 'No product found with this id!'
@@ -103,7 +99,7 @@ router.post('/', (req, res) => {
             tag_id,
           };
         });
-        return ProductTag.bulkCreate(productTagIdArr);
+        return Product_Tag.bulkCreate(productTagIdArr);
       }
       // if no product tags, just respond
       res.status(200).json(product);
