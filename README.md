@@ -75,11 +75,11 @@ Access the data by either the browser, or a REST API client such as Insomnia.
   ## <span id="usage"> Usage: </span>
   <br>
 
-  [![youtube application screenshot](https://img.youtube.com/vi/oNEmXUfHIlg/maxresdefault.jpg)](https://www.youtube.com/watch?v=oNEmXUfHIlg) 
-  
-  - 
+  Here's a youtube video showing the process.
 
-![generated html screenshot](./assets/images/screenshot.png) 
+  [![youtube application screenshot](https://img.youtube.com/vi/REtFDIjRqWk/maxresdefault.jpg)](https://www.youtube.com/watch?v=REtFDIjRqWk) 
+  
+   
   
   <br>  
   
@@ -87,11 +87,9 @@ Access the data by either the browser, or a REST API client such as Insomnia.
   
   <br>
   
-  - [Jest Docs](https://archive.jestjs.io/docs/en/22.x/getting-started)
+  - [Sequelize](https://sequelize.org/v3/docs/getting-started/)
 
   - [Node Docs](https://nodejs.org/en/docs/)
-
-  - [Inquirer Docs](https://www.npmjs.com/package//inquirer#documentation)
 
 
   <br>
@@ -142,10 +140,7 @@ SOFTWARE.
   
   <br>
   
-  
-```bash
-npm test
-```
+  No current tests.
 
   <br>
   
