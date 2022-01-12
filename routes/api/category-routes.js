@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     try {
       const categoryData = await Category.findAll(
         {
-          include: [ {model: Product, attributes: ['product_name']}]
+          include: [ {model: Product/*, attributes: ['product_name']*/}]
 
         }
       );
@@ -23,7 +23,7 @@ router.get('/:id', async (req, res) => {
   try {
     const categoryData = await Category.findByPk(req.params.id, {
       // JOIN with Product,
-      include: [{ model: Product, attributes: ['category_id'] }]
+      include: [{ model: Product/*, attributes: ['category_id']*/ }]
     });
       
     if (!categoryData) {
@@ -40,7 +40,8 @@ router.get('/:id', async (req, res) => {
   // create a new category
 router.post('/', async (req, res) => {
     try {
-      const categoryData = await Category.create(req.body);
+      const categoryData = await Category.create({
+      category_name:  req.body.category_name});
       res.status(200).json(categoryData);
     } catch (err) {
       res.status(400).json(err);
@@ -51,7 +52,7 @@ router.post('/', async (req, res) => {
 
   // update a category by its `id` value
   router.put('/:id', (req, res) => {
-    // Calls the update method on the Book model
+    // Calls the update method on the Category model
     Category.update(
       {
         // All the fields you can update and the data attached to the request body.
@@ -59,14 +60,14 @@ router.post('/', async (req, res) => {
  
       },
       {
-        // Gets the books based on the isbn given in the request parameters
+        // Gets the category based on the id given in the request parameters
         where: {
           id: req.params.id,
         },
       }
     )
       .then((updatedCatName) => {
-        // Sends the updated book as a json response
+        // Sends the updated category as a json response
         res.json(updatedCatName);
       })
       .catch((err) => res.json(err));
